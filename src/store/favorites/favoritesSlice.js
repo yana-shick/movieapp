@@ -1,13 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  id: '',
-  title: '',
-  year: '',
-  runtime: '',
-  director: '',
-  poster: '',
-};
+const initialState = [];
 
 const favoritesSlice = createSlice({
   name: 'favorites',
@@ -36,7 +29,14 @@ const favoritesSlice = createSlice({
       });
     },
     del(state, action) {
-      state.filter((movie) => movie.id != action.payload);
+      if (state.length > 1) {
+        state = state.filter((movie) => {
+          console.log(`starting detele favorite`, action.payload.id, movie.id);
+          return movie.id !== action.payload.id;
+        });
+      } else {
+        return initialState;
+      }
     },
   },
 });

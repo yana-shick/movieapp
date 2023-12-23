@@ -19,8 +19,9 @@ const activeSlice = createSlice({
   initialState,
   reducers: {
     upload(state, action) {
-      state.id = action.payload.imdbID;
-      state.title = action.payload.year;
+      state.id = action.payload.id;
+      state.title = action.payload.title;
+      state.year = action.payload.year;
       state.country = action.payload.country;
       state.runtime = action.payload.runtime;
       state.director = action.payload.director;
@@ -30,13 +31,13 @@ const activeSlice = createSlice({
       state.poster = action.payload.poster;
       state.isFavorite = false;
     },
-    toggleIsFavorite(state, action) {
-      state.isFavorite = action.payload;
+    toggleIsFavorite(state) {
+      state.isFavorite = !state.isFavorite;
     },
   },
 });
 
-console.log(activeSlice);
+console.log(`activeSlice:`, activeSlice);
 
-export const { upload, toggleIsFavorit } = activeSlice.actions;
+export const { upload, toggleIsFavorite } = activeSlice.actions;
 export default activeSlice.reducer;

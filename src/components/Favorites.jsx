@@ -1,5 +1,17 @@
 import React from 'react';
 
+import { Favorite } from './Favorite';
+
+import { useSelector } from 'react-redux';
+
 export const Favorites = () => {
-  return <div>Favorites</div>;
+  const favorites = useSelector((store) => store.favorites);
+
+  return (
+    <>
+      {favorites.map((favorite) => (
+        <Favorite favorite={favorite} key={favorite.id} />
+      ))}
+    </>
+  );
 };
