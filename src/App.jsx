@@ -3,8 +3,8 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Header } from './components/Header';
-import { Home } from './components/Home';
-import { Favorites } from './components/Favorites';
+import { Home } from './pages/Home';
+import { Favorites } from './pages/Favorites';
 
 function App() {
   return (
@@ -17,7 +17,6 @@ function App() {
         </Routes>
       </BrowserRouter>
     </>
-    // <div>{import.meta.env.VITE_API_KEY}</div>;
   );
 }
 

@@ -5,8 +5,8 @@ import { upload } from '../store/active/activeSlice';
 import { load } from '../store/favorites/favoritesSlice';
 import { toggleIsFavorite } from '../store/active/activeSlice';
 
-import { Active } from './Active';
-
+import { Active } from '../components/Active';
+// <div>{import.meta.env.VITE_API_KEY}</div>;
 export const Home = () => {
   const dispatch = useDispatch();
   const start = async () => {
