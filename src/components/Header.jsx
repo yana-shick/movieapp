@@ -1,20 +1,43 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useState } from 'react';
+
+import { Logo } from './Logo';
+import {
+  NavLinkWrapper,
+  NavbarWrapper,
+  StyledNavLink,
+  StyledIconMenu,
+} from '../styles/Navbar.styled';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+const link = [
+  {
+    page: 'Home',
+    href: '/',
+  },
+  {
+    page: 'Favorites',
+    href: '/favorites',
+  },
+];
 
 export const Header = () => {
+  const [active, setActive] = useState(false);
   return (
-    <header>
-      <h2>MovieApp</h2>
-      <nav>
-        <ul>
-          <Link to="/">
-            <button>Home</button>
-          </Link>
-          <Link to="/favorites">
-            <button>Favorite</button>
-          </Link>
-        </ul>
-      </nav>
-    </header>
+    <NavbarWrapper>
+      <Logo />
+      <StyledIconMenu icon={faBars} onClick={() => setActive(!active)} />
+      <NavLinkWrapper active={active}>
+        {link.map((link) => (
+          <StyledNavLink
+            activeclassname="active"
+            key={link.page}
+            to={link.href}
+          >
+            {link.page}
+          </StyledNavLink>
+        ))}
+      </NavLinkWrapper>
+    </NavbarWrapper>
   );
 };

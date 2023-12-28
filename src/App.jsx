@@ -1,21 +1,14 @@
-import './App.css';
-
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { Header } from './components/Header';
-import { Home } from './pages/Home';
-import { Favorites } from './pages/Favorites';
+import { Outlet } from 'react-router-dom';
+import GlobalStyles from './styles/Global.styled';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/favorites" element={<Favorites />} />
-        </Routes>
-      </BrowserRouter>
+      <Header />
+      <Outlet />
+      <GlobalStyles />
     </>
   );
 }

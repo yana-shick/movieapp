@@ -7,7 +7,7 @@ const initialState = {
   country: '',
   runtime: '',
   director: '',
-  actors: [],
+  actors: '',
   plot: '',
   imdbRating: '',
   poster: '',
@@ -19,17 +19,30 @@ const activeSlice = createSlice({
   initialState,
   reducers: {
     upload(state, action) {
+      state.id = action.payload.imdbID;
+      state.title = action.payload.Title;
+      state.year = action.payload.Year;
+      state.country = action.payload.Country;
+      state.runtime = action.payload.Runtime;
+      state.director = action.payload.Director;
+      state.actors = action.payload.Actors;
+      state.plot = action.payload.Plot;
+      state.imdbRating = action.payload.imdbRating;
+      state.poster = action.payload.Poster;
+      state.isFavorite = false;
+    },
+    update(state, action) {
       state.id = action.payload.id;
       state.title = action.payload.title;
       state.year = action.payload.year;
       state.country = action.payload.country;
       state.runtime = action.payload.runtime;
       state.director = action.payload.director;
-      state.actors = [];
+      state.actors = action.payload.actors;
       state.plot = action.payload.plot;
       state.imdbRating = action.payload.imdbRating;
       state.poster = action.payload.poster;
-      state.isFavorite = false;
+      state.isFavorite = true;
     },
     toggleIsFavorite(state) {
       state.isFavorite = !state.isFavorite;
@@ -39,5 +52,5 @@ const activeSlice = createSlice({
 
 console.log(`activeSlice:`, activeSlice);
 
-export const { upload, toggleIsFavorite } = activeSlice.actions;
+export const { upload, toggleIsFavorite, update } = activeSlice.actions;
 export default activeSlice.reducer;
